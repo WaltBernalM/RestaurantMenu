@@ -78,6 +78,13 @@ struct MenuItemsView: View {
                     }
                 }
             }
+            if isMenuOptionsVisible {
+                MenuOptionsView(isVisible: $isMenuOptionsVisible)
+                    .background(Color.white)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .transition(.move(edge: .bottom))
+                    .animation(.bouncy)
+            }
         }
     }
 }
