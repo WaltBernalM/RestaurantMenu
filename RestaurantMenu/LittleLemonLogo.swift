@@ -9,10 +9,16 @@ import SwiftUI
 
 struct LittleLemonLogo: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image("Little Lemon logo")
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: .infinity)
+            .padding()
     }
 }
 
-#Preview {
-    LittleLemonLogo()
+struct LittleLemonLogo_Previews: PreviewProvider {
+    static var previews: some View {
+        LittleLemonLogo()
+    }
 }
