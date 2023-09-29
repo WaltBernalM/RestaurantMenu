@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var mockData = MockData()
+    @StateObject var mockData = MenuViewModel()
     
     var body: some View {
         VStack {
