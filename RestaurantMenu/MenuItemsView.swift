@@ -30,8 +30,6 @@ struct MenuItemsView: View {
                                             VStack {
                                                 Rectangle().frame(width: 110, height: 80)
                                                 Text(food.title)
-                                                Text(String(format: "%.2f" ,food.price))
-                                                Text(String(food.ordersCount))
                                             }
                                         }
                                         .foregroundColor(.black)
