@@ -42,10 +42,10 @@ class MenuViewModel: ObservableObject {
             self.drinkMenuItems.sort{$0.price < $1.price}
             self.dessertMenuItems.sort{$0.price < $1.price}
         } else if sortCriteria == .aToZ {
-            self.foodMenuItems.sort{ customSort(item1: $0, item2: $1) }
-            self.drinkMenuItems.sort{ customSort(item1: $0, item2: $1) }
-            self.dessertMenuItems.sort{ customSort(item1: $0, item2: $1) }
-        } else {
+            self.foodMenuItems.sort{ $0.title < $1.title }
+            self.drinkMenuItems.sort{ $0.title < $1.title }
+            self.dessertMenuItems.sort{ $0.title < $1.title }
+        } else if sortCriteria == .null {
             self.foodMenuItems.sort{ customSort(item1: $0, item2: $1) }
             self.drinkMenuItems.sort{ customSort(item1: $0, item2: $1) }
             self.dessertMenuItems.sort{ customSort(item1: $0, item2: $1) }
