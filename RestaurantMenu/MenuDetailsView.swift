@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct MenuDetailsView: View {
-    private var menuItem: Data
+    private var menuItem: MenuItem
     
-    init(_ menuItem: Data) {
+    init(_ menuItem: MenuItem) {
         self.menuItem = menuItem
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(menuItem.name).font(.largeTitle).fontWeight(.bold).padding(.leading)
+            Text(menuItem.title).font(.largeTitle).fontWeight(.bold).padding(.leading)
             VStack(alignment: .center) {
                 LittleLemonLogo()
                 VStack {
@@ -25,12 +25,12 @@ struct MenuDetailsView: View {
                 }
                 VStack {
                     Text("Ordered:").fontWeight(.bold)
-                    Text(String(menuItem.ordered))
+                    Text(String(menuItem.ordersCount))
                 }
                 VStack {
                     Text("Ingredients:").fontWeight(.bold)
                     ForEach(menuItem.ingredients, id:\.self) { ingredient in
-                        Text(ingredient)
+                        Text(ingredient.rawValue)
                     }
                 }
             }
@@ -42,7 +42,7 @@ struct MenuDetailsView: View {
 
 struct MenuDetails_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleData = Data(name: "Food 5", price: 10.99, ordered: 1000, ingredients: ["spinach", "broccoli", "carrot", "pasta"])
+        let sampleData = MenuItem(price: 10.99, title: "Food 1", menuCategory: MenuCategory.Food, ordersCount: 105, ingredients: [Ingredient.Broccoli, Ingredient.Carrot, Ingredient.Spinach, Ingredient.TomatoSauce])
         MenuDetailsView(sampleData)
     }
 }
