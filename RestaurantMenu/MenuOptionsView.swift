@@ -40,7 +40,6 @@ struct MenuOptionsView: View {
                         sortBy = .price
                         menuViewModel.sortMenuItems(sortCriteria: sortBy)
                     } else {
-                        sortBy = .aToZ
                         menuViewModel.sortMenuItems(sortCriteria: sortBy)
                     }
                     
