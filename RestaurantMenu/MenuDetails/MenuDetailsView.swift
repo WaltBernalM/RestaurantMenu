@@ -42,7 +42,7 @@ struct MenuDetailsView: View {
 
 struct MenuDetails_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleData = MenuItem(price: 10.99, title: "Food 1", menuCategory: MenuCategory.Food, ordersCount: 105, ingredients: [Ingredient.Broccoli, Ingredient.Carrot, Ingredient.Spinach, Ingredient.TomatoSauce])
+        let sampleData = MenuItem(price: 10.99, title: "Food 1", menuCategory: MenuCategory.food, ordersCount: 105, ingredients: [Ingredient.broccoli, Ingredient.carrot, Ingredient.spinach, Ingredient.tomatoSauce])
         MenuDetailsView(sampleData)
     }
 }

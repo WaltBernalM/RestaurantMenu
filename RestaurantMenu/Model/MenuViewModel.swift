@@ -28,9 +28,9 @@ func mockDataGenerator (count: Int, menuCategory: MenuCategory) -> [MenuItem] {
 }
 
 class MenuViewModel: ObservableObject {
-    var foodMenuItems: [MenuItem] = mockDataGenerator(count: 12, menuCategory: MenuCategory.Food)
-    var drinkMenuItems: [MenuItem] = mockDataGenerator(count: 8, menuCategory: MenuCategory.Drink)
-    var dessertMenuItems: [MenuItem] = mockDataGenerator(count: 4, menuCategory: MenuCategory.Dessert)
+    var foodMenuItems: [MenuItem] = mockDataGenerator(count: 12, menuCategory: MenuCategory.food)
+    var drinkMenuItems: [MenuItem] = mockDataGenerator(count: 8, menuCategory: MenuCategory.drink)
+    var dessertMenuItems: [MenuItem] = mockDataGenerator(count: 4, menuCategory: MenuCategory.dessert)
     
     func sortMenuItems(sortCriteria: SortCriteria) {
         if sortCriteria == .popular {
