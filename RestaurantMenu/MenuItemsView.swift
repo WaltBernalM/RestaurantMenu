@@ -8,59 +8,66 @@
 import SwiftUI
 
 struct MenuItemsView: View {
-    @EnvironmentObject var mockData: MockData
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    @EnvironmentObject var menuViewModel: MenuViewModel
     @State private var isMenuOptionsVisible: Bool = false
+    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    
+    @State private var selectedCategory: SelectCriteria = .all
+    @State private var sortBy: SortCriteria = .null
+    @State private var sortedFood: [MenuItem] = [MenuItem]()
     
     var body: some View {
         ZStack {
             NavigationView {
-                    // Rendering of the mockData
+                    // Rendering of the MenuItems array
                     ScrollView {
-                        // Foods section
-                        VStack(alignment: .leading) {
-                            Text("Food").font(.title2)
-                            LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(mockData.foods, id:\.self) { food in
-                                    NavigationLink(destination: MenuDetailsView(food)) {
-                                        VStack {
-                                            Rectangle().frame(width: 110, height: 80)
-                                            Text(food.name)
+                        if selectedCategory == .food || selectedCategory == .all {
+                            VStack(alignment: .leading) {
+                                Text("Food").font(.title2)
+                                LazyVGrid(columns: columns, spacing: 10) {
+                                    ForEach(menuViewModel.foodMenuItems) { food in
+                                        NavigationLink(destination: MenuDetailsView(food)) {
+                                            VStack {
+                                                Rectangle().frame(width: 110, height: 80)
+                                                Text(food.title)
+                                                Text(String(format: "%.2f" ,food.price))
+                                                Text(String(food.ordersCount))
+                                            }
                                         }
+                                        .foregroundColor(.black)
                                     }
-                                    .foregroundColor(.black)
                                 }
                             }
                         }
-                        
-                        // Drinks section
-                        VStack(alignment: .leading) {
-                            Text("Drinks").font(.title2)
-                            LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(mockData.drinks, id:\.self) { drink in
-                                    NavigationLink(destination: MenuDetailsView(drink)){
-                                        VStack {
-                                            Rectangle().frame(width: 110, height: 80)
-                                            Text(drink.name)
+                        if selectedCategory == .drinks || selectedCategory == .all {
+                            VStack(alignment: .leading) {
+                                Text("Drinks").font(.title2)
+                                LazyVGrid(columns: columns, spacing: 10) {
+                                    ForEach(menuViewModel.drinkMenuItems) { drink in
+                                        NavigationLink(destination: MenuDetailsView(drink)) {
+                                            VStack {
+                                                Rectangle().frame(width: 110, height: 80)
+                                                Text(drink.title)
+                                            }
                                         }
+                                        .foregroundColor(.black)
                                     }
-                                    .foregroundColor(.black)
                                 }
                             }
                         }
-                        
-                        // Desserts section
-                        VStack(alignment: .leading) {
-                            Text("Desserts").font(.title2)
-                            LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(mockData.desserts, id:\.self) { dessert in
-                                    NavigationLink(destination: MenuDetailsView(dessert)){
-                                        VStack {
-                                            Rectangle().frame(width: 110, height: 80)
-                                            Text(dessert.name)
+                        if (selectedCategory == .desserts || selectedCategory == .all) {
+                            VStack(alignment: .leading) {
+                                Text("Desserts").font(.title2)
+                                LazyVGrid(columns: columns, spacing: 10) {
+                                    ForEach(menuViewModel.drinkMenuItems) { dessert in
+                                        NavigationLink(destination: MenuDetailsView(dessert)) {
+                                            VStack {
+                                                Rectangle().frame(width: 110, height: 80)
+                                                Text(dessert.title)
+                                            }
                                         }
+                                        .foregroundColor(.black)
                                     }
-                                    .foregroundColor(.black)
                                 }
                             }
                         }
@@ -79,11 +86,15 @@ struct MenuItemsView: View {
                 }
             }
             if isMenuOptionsVisible {
-                MenuOptionsView(isVisible: $isMenuOptionsVisible)
+                MenuOptionsView(
+                    isVisible: $isMenuOptionsVisible,
+                    selectedCategory: $selectedCategory,
+                    sortBy: $sortBy
+                )
                     .background(Color.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .transition(.move(edge: .bottom))
-                    .animation(.bouncy)
+                    .transition(.move(edge: .top))
+                    .animation(.default)
             }
         }
     }
@@ -91,6 +102,6 @@ struct MenuItemsView: View {
 
 struct MenuItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuItemsView().environmentObject(MockData())
+        MenuItemsView().environmentObject(MenuViewModel())
     }
 }
