@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct MenuItem: MenuItemProtocol {
+    let id = UUID()
+    var price: Double
+    var title: String
+    var menuCategory: MenuCategory
+    var ordersCount: Int
+    var ingredients: [Ingredient]
+}
