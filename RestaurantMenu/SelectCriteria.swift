@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum SelectCriteria {
+    case all
+    case food
+    case drinks
+    case desserts
+}
