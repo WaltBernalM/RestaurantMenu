@@ -39,7 +39,8 @@ struct MenuOptionsView: View {
                     } else if sort == 2 {
                         sortBy = .price
                         menuViewModel.sortMenuItems(sortCriteria: sortBy)
-                    } else {
+                    } else if sort == 3 {
+                        sortBy = .aToZ
                         menuViewModel.sortMenuItems(sortCriteria: sortBy)
                     }
                     
