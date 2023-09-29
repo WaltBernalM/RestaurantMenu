@@ -43,8 +43,6 @@ struct MenuOptionsView: View {
                         menuViewModel.sortMenuItems(sortCriteria: sortBy)
                     }
                     
-                    print("selectedCategory: ", selectedCategory)
-                    print("sortBY: ",sortBy)
                     isVisible.toggle()
                 }) {
                     Text("Done").fontWeight(.bold)
