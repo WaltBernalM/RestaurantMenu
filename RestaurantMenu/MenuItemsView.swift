@@ -70,8 +70,8 @@ struct MenuItemsView: View {
                             }
                         }
                     }
-                    .padding([.leading, .trailing])
                     .navigationBarTitle("Menu")
+                    .padding([.leading, .trailing])
                     .toolbar{
                         ToolbarItem(placement:.topBarTrailing) {
                             Button(action: {
