@@ -14,4 +14,5 @@ protocol MenuItemProtocol: Identifiable {
     var menuCategory: MenuCategory { get }
     var ordersCount: Int { get set}
     var ingredients: [Ingredient] {get set}
+    var priceInt: Int { get set }
 }
