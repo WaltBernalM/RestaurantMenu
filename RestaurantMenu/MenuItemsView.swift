@@ -91,7 +91,7 @@ struct MenuItemsView: View {
                 )
                     .background(Color.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .transition(.move(edge: .top))
+                    .transition(.move(edge: .bottom))
                     .animation(.default)
             }
         }
