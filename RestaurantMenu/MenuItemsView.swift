@@ -57,7 +57,7 @@ struct MenuItemsView: View {
                             VStack(alignment: .leading) {
                                 Text("Desserts").font(.title2)
                                 LazyVGrid(columns: columns, spacing: 10) {
-                                    ForEach(menuViewModel.drinkMenuItems) { dessert in
+                                    ForEach(menuViewModel.dessertMenuItems) { dessert in
                                         NavigationLink(destination: MenuDetailsView(dessert)) {
                                             VStack {
                                                 Rectangle().frame(width: 110, height: 80)
